@@ -1,23 +1,38 @@
 import axios from "axios";
 import url from "./URL";
+import setupUser from "./setupUser"
 
 async function registerUser({ email, password, username }) {
 
-    console.log(email, password, username)
-    console.log(`${url}/auth/local/register`)
-    console.log(JSON.stringify({
-        username, email, password
-    }))
-    const response = await axios.post(`${url}/auth/local/register`, {
-        username: username, email: email, password: password
+    const response = await fetch(`${url}/auth/local/register`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            username: username,
+            email: email,
+            password: password
+        })
     })
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.error(error)
+        })
+    // const response = await fetch
+    //     .post(`${url}/auth/local/register`, {
+    //         username,
+    //         email,
+    //         password
+    //     })
+    //    .catch(error => console.log(error));
 
-    console.log("hello")
-    // if (response) {
-    //     // setup user
-    // }
-    return response;
+    let responseOK = response && response.ok;
+    if (responseOK) {
+        let data = await response.json();
+        setupUser(data)
+        return true;
+    }
+    return false;
 }
 
 export default registerUser;
