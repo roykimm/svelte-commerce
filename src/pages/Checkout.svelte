@@ -4,6 +4,7 @@
     import user from "../stores/user";
     import cart, { cartTotal } from "../stores/cart";
     import submitOrder from "../strapi/submitOrder";
+    import globalStore from "../stores/globalStore";
 
     let name = "";
     // stripe vars
@@ -38,6 +39,11 @@
     });
 
     async function handleSubmit() {
+        globalStore.toggleItem(
+            "alert",
+            true,
+            "submitting order... please wait!"
+        );
         let response = await stripe
             .createToken(card)
             .catch((error) => console.log(error));
@@ -46,7 +52,6 @@
         if (token) {
             const { id } = token;
             //submit the order
-            console.log("submitOrder");
             let order = await submitOrder({
                 name,
                 total: $cartTotal,
@@ -54,6 +59,25 @@
                 stripeTokenId: id,
                 userToken: $user.jwt,
             });
+
+            if (order) {
+                globalStore.toggleItem(
+                    "alert",
+                    true,
+                    "주문이 완료되었습니다.!"
+                );
+                cart.set([]);
+                localStorage.setItem("cart", JSON.stringify([]));
+                navigate("/");
+                return;
+            } else {
+                globalStore.toggleItem(
+                    "alert",
+                    true,
+                    "주문중 에러가 발생하였습니다. 다시 시도해주세요.",
+                    true
+                );
+            }
         } else {
             //console.log(response);
         }
