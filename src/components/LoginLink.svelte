@@ -13,13 +13,13 @@
         on:click={() => {
             logoutUser();
             globalStore.toggleItem("sidebar", false);
-        }}>logout</a
+        }}>로그아웃</a
     >
 {:else}
     <a
         href="/login"
         on:click={() => {
             globalStore.toggleItem("sidebar", false);
-        }}>login</a
+        }}>로그인</a
     >
 {/if}

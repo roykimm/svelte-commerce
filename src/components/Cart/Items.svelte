@@ -18,14 +18,14 @@
     <img src={image} alt={title} />
     <div>
         <h4>{title}</h4>
-        <h5>${price}</h5>
+        <h5>₩{price}</h5>
         <button
             class="cart-btn remove-btn"
             on:click={() => {
                 removeItem(id);
             }}
         >
-            remove
+            삭제
         </button>
     </div>
     <div>

@@ -20,7 +20,7 @@
         </button>
         <!-- logo -->
         <a href="/" use:link class="nav-logo">
-            <img src="/assets/images/logo.svg" class="logo" alt="bella logo" />
+            <h2 class="bellhoody">Bell Hoody</h2>
         </a>
         <!-- cart button -->
         <CartButton />

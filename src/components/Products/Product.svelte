@@ -11,11 +11,11 @@
         <a
             href={`/products/${id}`}
             class="btn btn-primary product-link"
-            use:link>details</a
+            use:link>상세보기</a
         >
     </div>
     <div class="product-footer">
         <p class="product-title">{title}</p>
-        <p class="product-price">${price}</p>
+        <p class="product-price">₩{price}</p>
     </div>
 </article>

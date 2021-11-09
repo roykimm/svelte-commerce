@@ -25,7 +25,11 @@
     //handle submit
     async function handleSubmit() {
         // add alert
-        globalStore.toggleItem("alert", true, "loading data... please wait");
+        globalStore.toggleItem(
+            "alert",
+            true,
+            "데이터를 로딩중입니다. 잠시만 기다려 주세요."
+        );
 
         let user;
         if (isMember) {
@@ -36,63 +40,68 @@
 
         if (user) {
             navigate("/products");
-            globalStore.toggleItem("alert", true, "welcome to shopping!");
+            globalStore.toggleItem("alert", true, "쇼핑을 시작하세요!");
             return;
         }
-        globalStore.toggleItem("alert", true, "there was an error! ", true);
+        globalStore.toggleItem(
+            "alert",
+            true,
+            "아이디/패스워드를 확인해주세요.",
+            true
+        );
     }
 </script>
 
 <section class="form">
     <h2 class="section-title">
         {#if isMember}
-            sign in
+            로그인
         {:else}
-            register
+            회원가입
         {/if}
     </h2>
     <form class="login-form" on:submit|preventDefault={handleSubmit}>
         <!-- single input -->
         <div class="form-control">
-            <label for="email">email</label>
+            <label for="email">이메일</label>
             <input type="email" id="email" bind:value={email} />
         </div>
         <!-- end of single input -->
         <!-- single input -->
         <div class="form-control">
-            <label for="password">password</label>
+            <label for="password">패스워드</label>
             <input type="password" id="password" bind:value={password} />
         </div>
         <!-- end of single input -->
         {#if !isMember}
             <!-- single input -->
             <div class="form-control">
-                <label for="username">username</label>
+                <label for="username">성명</label>
                 <input type="text" id="username" bind:value={username} />
             </div>
             <!-- end of single input -->
         {/if}
         {#if isEmpty}
-            <p class="form-empty">please fill out all form fields</p>
+            <p class="form-empty">모든 필드를 채워주세요.</p>
         {/if}
         <button
             type="submit"
             class="btn btn-block btn-primary"
             disable={isEmpty}
-            class:disabled={isEmpty}>submit</button
+            class:disabled={isEmpty}>로그인</button
         >
         {#if isMember}
             <p class="register-link">
-                need to register?
+                회원가입은
                 <button type="button" class="" on:click={toggleMember}
-                    >click here</button
+                    >여기를 클릭</button
                 >
             </p>
         {:else}
             <p class="register-link">
-                Aleady a member
+                이미 회원이시면
                 <button type="button" class="" on:click={toggleMember}
-                    >click here</button
+                    >여기를 클릭</button
                 >
             </p>
         {/if}

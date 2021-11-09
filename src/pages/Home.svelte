@@ -7,6 +7,6 @@
 </script>
 
 <Hero>
-    <a href="/products" class="btn btn-primary btn-hero" use:link>Shop now</a>
+    <a href="/products" class="btn btn-primary btn-hero" use:link>제품구매</a>
 </Hero>
-<Featured title="featured products" />
+<Featured title="상품 리스트" />

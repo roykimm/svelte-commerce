@@ -18,7 +18,7 @@
             </ul>
             <!-- nav logo-->
             <a href="/" use:link class="nav-logo big-logo">
-                <img src="/assets/images/logo.svg" class="logo" alt="logo!" />
+                <h2 class="bellhoody">Bell Hoody</h2>
             </a>
             <!-- cart toggle -->
             <div class="nav-aside">

@@ -86,9 +86,9 @@
 
 {#if $cartTotal > 0}
     <section class="form">
-        <h2 class="section-title">checkout</h2>
+        <h2 class="section-title">결재</h2>
         <form class="checkout-form" on:submit|preventDefault={handleSubmit}>
-            <h3>order total : ${$cartTotal}</h3>
+            <h3>총 주문금액 : {$cartTotal}</h3>
             <!-- single input-->
             <div class="form-control">
                 <label for="name">your name</label>
@@ -99,14 +99,13 @@
             <!-- stripe stuff-->
             <div class="stripe-input">
                 <!-- info -->
-                <label for="card-element">Credit or Debit Card</label>
+                <label for="card-element">신용카드</label>
                 <p class="stripe-info">
-                    test using this credit card: <span>4242 4242 4242 4242</span
-                    >
+                    테스트용 카드 번호: <span>4242 4242 4242 4242</span>
                     <br />
-                    enter any 5 digits for the zip code
+                    5자리 zip코드를 입력해주세요
                     <br />
-                    enter any 3 digit for the CVC
+                    3자리의 cvc 번호를 입력하세요
                 </p>
                 <div id="card-element" bind:this={cardElement}>
                     <!-- stripe -->
@@ -118,20 +117,20 @@
 
             <!-- error message -->
             {#if isEmpty}
-                <p class="form-empty">please fill out name field</p>
+                <p class="form-empty">모든 입력 필드를 채워주세요</p>
             {/if}
             <!-- submit button -->
             <button
                 type="submit"
                 class="btn btn-block btn-primary"
                 disabled={isEmpty}
-                class:disabled={isEmpty}>submit</button
+                class:disabled={isEmpty}>결재</button
             >
         </form>
     </section>
 {:else}
     <div class="checkout-empty">
-        <h2>your cart is empty</h2>
-        <a href="/products" use:link class="btn btn-primary">fill it</a>
+        <h2>장바구니에 항목이 없습니다.</h2>
+        <a href="/products" use:link class="btn btn-primary">제품 선택하기</a>
     </div>
 {/if}

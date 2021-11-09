@@ -20,7 +20,7 @@
                 >
                     <i class="fas fa-window-close" />
                 </button>
-                <h2 class="cart-title">your bag</h2>
+                <h2 class="cart-title">장바구니</h2>
                 <span />
             </div>
             <!-- end cart header -->
@@ -38,18 +38,19 @@
                         class="btn btn-primary btn-block"
                         on:click={() => {
                             globalStore.toggleItem("cart", false);
-                        }}>checkout</a
+                        }}>결제하기</a
                     >
                 {:else}
                     <p class="cart-login">
-                        in order to checkout please
+                        결제하시려면
                         <a
                             href="/login"
                             use:link
                             on:click={() => {
                                 globalStore.toggleItem("cart", false);
-                            }}>login</a
+                            }}>로그인</a
                         >
+                        해주세요.
                     </p>
                 {/if}
             </div>

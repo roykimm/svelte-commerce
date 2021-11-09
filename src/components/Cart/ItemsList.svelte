@@ -21,8 +21,8 @@
                 <Item {...cartItem} />
             </div>
         {:else}
-            <h2 class="empty">it is empty</h2>
+            <h2 class="empty">선택된 품목이 없습니다.</h2>
         {/each}
     </article>
-    <h3 class="cart-total">totla : ${$cartTotal}</h3>
+    <h3 class="cart-total">합계 : ₩{$cartTotal}</h3>
 </section>

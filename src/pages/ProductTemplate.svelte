@@ -23,7 +23,8 @@
 {:else}
     <section class="single-product">
         <!-- back to products -->
-        <a href="/products" class="btn btn-primary" use:link>back to products</a
+        <a href="/products" class="btn btn-primary" use:link
+            >제품으로 돌아가기</a
         >
         <!-- single product container-->
         <div class="single-product-container">
@@ -32,7 +33,7 @@
             </article>
             <article>
                 <h1>{product.title}</h1>
-                <h2>${product.price}</h2>
+                <h2>₩{product.price}</h2>
                 <p>{product.description}</p>
                 <button
                     class="btn btn-primary btn-block"
