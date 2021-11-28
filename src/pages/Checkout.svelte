@@ -82,16 +82,20 @@
             //console.log(response);
         }
     }
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 </script>
 
 {#if $cartTotal > 0}
     <section class="form">
-        <h2 class="section-title">결재</h2>
+        <h2 class="section-title">결제하기</h2>
         <form class="checkout-form" on:submit|preventDefault={handleSubmit}>
-            <h3>총 주문금액 : {$cartTotal}</h3>
+            <h3>총 주문금액 : {numberWithCommas($cartTotal)} 원</h3>
             <!-- single input-->
             <div class="form-control">
-                <label for="name">your name</label>
+                <label for="name">성명 입력(아무이름이나 입력가능)</label>
                 <input type="text" id="name" bind:value={name} />
             </div>
             <!-- single input-->
@@ -99,7 +103,7 @@
             <!-- stripe stuff-->
             <div class="stripe-input">
                 <!-- info -->
-                <label for="card-element">신용카드</label>
+                <label for="card-element">신용카드 정보입력(하단에 입력)</label>
                 <p class="stripe-info">
                     테스트용 카드 번호: <span>4242 4242 4242 4242</span>
                     <br />
@@ -124,7 +128,7 @@
                 type="submit"
                 class="btn btn-block btn-primary"
                 disabled={isEmpty}
-                class:disabled={isEmpty}>결재</button
+                class:disabled={isEmpty}>결제하기</button
             >
         </form>
     </section>
