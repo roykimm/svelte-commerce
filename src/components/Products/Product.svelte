@@ -3,6 +3,10 @@
     const { title, image, price, id } = product;
 
     import { link } from "svelte-routing";
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 </script>
 
 <article class="product">
@@ -16,6 +20,6 @@
     </div>
     <div class="product-footer">
         <p class="product-title">{title}</p>
-        <p class="product-price">₩{price}</p>
+        <p class="product-price">₩{numberWithCommas(price)}</p>
     </div>
 </article>

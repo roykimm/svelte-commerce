@@ -12,6 +12,10 @@
     import globalStore from "../stores/globalStore";
 
     $: product = $products.find((item) => item.id === parseInt(id));
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 </script>
 
 <svelte:head>
@@ -33,7 +37,7 @@
             </article>
             <article>
                 <h1>{product.title}</h1>
-                <h2>₩{product.price}</h2>
+                <h2>₩{numberWithCommas(product.price)}</h2>
                 <p>{product.description}</p>
                 <button
                     class="btn btn-primary btn-block"

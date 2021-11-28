@@ -11,6 +11,10 @@
         increaseAmount,
         decreaseAmount,
     } from "../../stores/cart";
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 </script>
 
 <!-- cart item -->
@@ -18,7 +22,7 @@
     <img src={image} alt={title} />
     <div>
         <h4>{title}</h4>
-        <h5>₩{price}</h5>
+        <h5>${numberWithCommas(price)}</h5>
         <button
             class="cart-btn remove-btn"
             on:click={() => {

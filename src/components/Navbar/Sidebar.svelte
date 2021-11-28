@@ -21,11 +21,7 @@
             </button>
         </div>
         <!-- site logo -->
-        <img
-            src="/assets/images/logo.svg"
-            alt="logo!"
-            class="logo sidebar-logo"
-        />
+        <h2 class="bellhoody">Bell Hoody</h2>
         <!-- links -->
         <ul class="sidebar-links">
             {#each links as sideLink}

@@ -8,6 +8,9 @@
     afterUpdate(() => {
         setStorageCart($cart);
     });
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 </script>
 
 <section class="cart-items">
@@ -24,5 +27,5 @@
             <h2 class="empty">선택된 품목이 없습니다.</h2>
         {/each}
     </article>
-    <h3 class="cart-total">합계 : ₩{$cartTotal}</h3>
+    <h3 class="cart-total">합계 : ₩{numberWithCommas($cartTotal)}</h3>
 </section>
